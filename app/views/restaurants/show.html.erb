@@ -1,0 +1,41 @@
+<div id="all">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="card">
+          <h1 class="text-center"><strong><%= @restaurant.name %></strong>'s restaurant</h1>
+          <br>
+          <h3>Category : <%= @restaurant.category %></h3>
+          <h3>Address : <%= @restaurant.address %></h3>
+          <h3>Phone : <%= @restaurant.phone_number %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= image_tag "resto.jpg", {class: "img-circle", id: "logo", width: "350px"}%>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <ul class="list-inline">
+          <li>
+          <%= link_to "Write a new review", new_restaurant_review_path(@restaurant), class: "btn btn-warning" %>
+          </li>
+          <li>
+          <%= link_to "Back", restaurants_path, class: "btn btn-success" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row comments">
+      <h1 class="text-center">Last comments</h1>
+      <% @restaurant.reviews.each do |review| %>
+        <div class="col-sm-3">
+          <div class="card">
+            <p class: "text-justify"><span class="label label-success">Review</span>  <%= review.content %></p>
+            <p><span class="label label-success">Rating</span>  <%= review.rating %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
